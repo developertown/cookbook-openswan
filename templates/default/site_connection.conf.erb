@@ -1,0 +1,21 @@
+conn <%= @name %>
+     # preshared key
+     authby=secret
+     # load connection and initiate it on startup
+     auto=start
+     forceencaps=yes
+     # use %defaultroute to find our local IP, since it is dynamic
+     #left=%defaultroute
+     left=<%= @local_ip %>
+     # set our ID to our elastic IP
+     leftid=<%= @elastic_ip %>
+     # set our desired source IP to the Elastic IP. Openswan will create interface address and route
+     leftsourceip=<%= @elastic_ip %>
+     right=<%= @their_external_ip %>
+     rightsubnet=<%= @their_inside_subnet %>
+     pfs=yes
+     ike=<%= @ike %>
+     ikelifetime=<%= @ikelifetime %>
+     phase2alg=<%= @phase2alg %>
+     salifetime=<%= @salifetime %>
+
